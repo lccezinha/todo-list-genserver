@@ -30,7 +30,7 @@ defmodule TodoerTest do
     test "must add a new entry", state do
       entry = %{date: {2019, 18, 1}, title: "Go to Dentist!"}
 
-      assert %{entries: entries} = Todoer.add_entry(state[:todo_list], entry)
+      assert %{entries: _entries} = Todoer.add_entry(state[:todo_list], entry)
     end
   end
 
@@ -41,8 +41,8 @@ defmodule TodoerTest do
 
       entries =
         state[:todo_list]
-        |> Todoer.add_entry(%{date: {2019, 18, 1}, title: "Go to Dentist!"})
-        |> Todoer.add_entry(%{date: {2019, 18, 2}, title: "Go to Supermarket!"})
+        |> Todoer.add_entry(entry)
+        |> Todoer.add_entry(entry_two)
 
       assert [%{date: {2019, 18, 1}, id: 1, title: "Go to Dentist!"}] ==
                Todoer.entries(entries, entry.date)
