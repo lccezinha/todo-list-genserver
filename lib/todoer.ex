@@ -67,7 +67,7 @@ defmodule Todoer do
     iex> Todoer.entries(todo_list, {2019, 18, 1})
     [%{date: {2019, 18, 1}, id: 1, title: "Go to Dentist!"}]
   """
-  def entries(%Todoer{entries: entries}, date) do
+  def entries(%Todoer{entries: entries}, date \\ {2020, 01, 01}) do
     entries
     |> Stream.filter(fn {_, entry} -> entry.date == date end)
     |> Enum.map(fn {_, entry} -> entry end)
